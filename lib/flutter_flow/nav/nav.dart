@@ -63,7 +63,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'VerifyParentRegister',
           path: '/verifyParentRegister',
-          builder: (context, params) => VerifyParentRegisterWidget(),
+          builder: (context, params) => VerifyParentRegisterWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+            username: params.getParam(
+              'username',
+              ParamType.String,
+            ),
+            password: params.getParam(
+              'password',
+              ParamType.String,
+            ),
+            pincode: params.getParam(
+              'pincode',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ParentForgotPassword',

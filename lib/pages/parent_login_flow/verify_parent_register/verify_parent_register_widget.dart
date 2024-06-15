@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,7 +14,18 @@ import 'verify_parent_register_model.dart';
 export 'verify_parent_register_model.dart';
 
 class VerifyParentRegisterWidget extends StatefulWidget {
-  const VerifyParentRegisterWidget({super.key});
+  const VerifyParentRegisterWidget({
+    super.key,
+    required this.email,
+    required this.username,
+    required this.password,
+    required this.pincode,
+  });
+
+  final String? email;
+  final String? username;
+  final String? password;
+  final String? pincode;
 
   @override
   State<VerifyParentRegisterWidget> createState() =>
@@ -33,8 +45,8 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
     super.initState();
     _model = createModel(context, () => VerifyParentRegisterModel());
 
-    _model.emailAddressTextController ??= TextEditingController();
-    _model.emailAddressFocusNode ??= FocusNode();
+    _model.enteredPincodeTextController ??= TextEditingController();
+    _model.enteredPincodeFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -183,8 +195,8 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
                         child: Container(
                           width: double.infinity,
                           child: TextFormField(
-                            controller: _model.emailAddressTextController,
-                            focusNode: _model.emailAddressFocusNode,
+                            controller: _model.enteredPincodeTextController,
+                            focusNode: _model.enteredPincodeFocusNode,
                             autofocus: true,
                             autofillHints: [AutofillHints.oneTimeCode],
                             obscureText: false,
@@ -244,7 +256,7 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
                                 null,
                             keyboardType: TextInputType.number,
                             validator: _model
-                                .emailAddressTextControllerValidator
+                                .enteredPincodeTextControllerValidator
                                 .asValidator(context),
                             inputFormatters: [
                               FilteringTextInputFormatter.allow(RegExp('[0-9]'))
@@ -258,8 +270,60 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 4.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              var _shouldSetState = false;
+                              if (widget.pincode ==
+                                  _model.enteredPincodeTextController.text) {
+                                _model.apiResultgb6 = await AuthServiceGroup
+                                    .registerParentCall
+                                    .call();
+                                _shouldSetState = true;
+                                if ((_model.apiResultgb6?.succeeded ?? true)) {
+                                  FFAppState().authToken =
+                                      (_model.apiResultgb6?.bodyText ?? '');
+
+                                  context.pushNamed('ParentOnboarding');
+
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email already exists',
+                                        style: TextStyle(
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'PIN Code is not correct',
+                                      style: TextStyle(
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+
+                              if (_shouldSetState) setState(() {});
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(

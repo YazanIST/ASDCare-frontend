@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -479,8 +480,78 @@ class _ParentRegisterWidgetState extends State<ParentRegisterWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 7.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              var _shouldSetState = false;
+                              if (_model.passwordTextController.text ==
+                                  _model.confirmPasswordTextController.text) {
+                                _model.pincode =
+                                    await AuthServiceGroup.sendUserPINCall.call(
+                                  email: _model.emailAddressTextController.text,
+                                );
+                                _shouldSetState = true;
+                                if ((_model.pincode?.succeeded ?? true)) {
+                                  context.pushNamed(
+                                    'VerifyParentRegister',
+                                    queryParameters: {
+                                      'email': serializeParam(
+                                        _model.emailAddressTextController.text,
+                                        ParamType.String,
+                                      ),
+                                      'username': serializeParam(
+                                        _model.usernameTextController.text,
+                                        ParamType.String,
+                                      ),
+                                      'password': serializeParam(
+                                        _model.passwordTextController.text,
+                                        ParamType.String,
+                                      ),
+                                      'pincode': serializeParam(
+                                        (_model.pincode?.bodyText ?? ''),
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Something went wrong',
+                                        style: TextStyle(
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Passwords do not match',
+                                      style: TextStyle(
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+
+                              if (_shouldSetState) setState(() {});
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(

@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,6 +35,8 @@ class ParentRegisterModel extends FlutterFlowModel<ParentRegisterWidget> {
   late bool confirmPasswordVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordTextControllerValidator;
+  // Stores action output result for [Backend Call - API (Send User PIN)] action in Button widget.
+  ApiCallResponse? pincode;
 
   @override
   void initState(BuildContext context) {

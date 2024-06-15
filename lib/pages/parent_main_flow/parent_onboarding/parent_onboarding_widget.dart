@@ -164,7 +164,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                             }
                             final textGetUsernameResponse = snapshot.data!;
                             return Text(
-                              'Welcome back ${textGetUsernameResponse.bodyText}!!',
+                              'Welcome ${textGetUsernameResponse.bodyText}!!',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall

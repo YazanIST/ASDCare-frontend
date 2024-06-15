@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -16,10 +17,13 @@ class VerifyParentRegisterModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  // State field(s) for enteredPincode widget.
+  FocusNode? enteredPincodeFocusNode;
+  TextEditingController? enteredPincodeTextController;
+  String? Function(BuildContext, String?)?
+      enteredPincodeTextControllerValidator;
+  // Stores action output result for [Backend Call - API (Register Parent)] action in Button widget.
+  ApiCallResponse? apiResultgb6;
 
   @override
   void initState(BuildContext context) {}
@@ -27,7 +31,7 @@ class VerifyParentRegisterModel
   @override
   void dispose() {
     unfocusNode.dispose();
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    enteredPincodeFocusNode?.dispose();
+    enteredPincodeTextController?.dispose();
   }
 }
