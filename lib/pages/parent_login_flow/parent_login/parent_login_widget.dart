@@ -362,9 +362,12 @@ class _ParentLoginWidgetState extends State<ParentLoginWidget>
                               0.0, 0.0, 0.0, 7.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              _model.apiResult6tf = await ParentLoginCall.call(
+                              _model.apiResult6tf = await AuthServiceGroup
+                                  .verifyUserInformationCall
+                                  .call(
                                 email: _model.emailAddressTextController.text,
                                 password: _model.passwordTextController.text,
+                                userType: 'PARENT',
                               );
                               if ((_model.apiResult6tf?.succeeded ?? true)) {
                                 FFAppState().authToken =
@@ -375,7 +378,7 @@ class _ParentLoginWidgetState extends State<ParentLoginWidget>
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Invalid username or password',
+                                      (_model.apiResult6tf?.bodyText ?? ''),
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -429,8 +432,8 @@ class _ParentLoginWidgetState extends State<ParentLoginWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              context.pushNamed('ParentRegister');
                             },
                             text: 'Register Now',
                             options: FFButtonOptions(

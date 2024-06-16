@@ -276,7 +276,11 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
                                   _model.enteredPincodeTextController.text) {
                                 _model.apiResultgb6 = await AuthServiceGroup
                                     .registerParentCall
-                                    .call();
+                                    .call(
+                                  email: widget.email,
+                                  username: widget.username,
+                                  password: widget.password,
+                                );
                                 _shouldSetState = true;
                                 if ((_model.apiResultgb6?.succeeded ?? true)) {
                                   FFAppState().authToken =

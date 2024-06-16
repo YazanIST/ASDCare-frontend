@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/empty_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -144,7 +145,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 15.0, 0.0, 15.0),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: GetUsernameCall.call(
+                          future: AuthServiceGroup.getUsernameCall.call(
                             authToken: FFAppState().authToken,
                           ),
                           builder: (context, snapshot) {
@@ -220,6 +221,14 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                     .jsonBody,
                                 r'''$[*]''',
                               ).toList();
+                              if (childrenEmails.isEmpty) {
+                                return Center(
+                                  child: Container(
+                                    height: 1.0,
+                                    child: EmptyComponentWidget(),
+                                  ),
+                                );
+                              }
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
@@ -348,45 +357,54 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             65.0, 8.0, 65.0, 0.0),
-                        child: Container(
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 3.0,
-                                color: Color(0x20000000),
-                                offset: Offset(
-                                  0.0,
-                                  1.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(
-                              color: Colors.transparent,
-                              width: 0.0,
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                8.0, 8.0, 12.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'See how to add a new child',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('AddingChildGuide');
+                          },
+                          child: Container(
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3.0,
+                                  color: Color(0x20000000),
+                                  offset: Offset(
+                                    0.0,
+                                    1.0,
+                                  ),
+                                )
                               ],
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: Colors.transparent,
+                                width: 0.0,
+                              ),
+                            ),
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 8.0, 12.0, 8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'See how to add a new child',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

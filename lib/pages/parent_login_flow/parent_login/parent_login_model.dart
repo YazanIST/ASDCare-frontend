@@ -24,7 +24,7 @@ class ParentLoginModel extends FlutterFlowModel<ParentLoginWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // Stores action output result for [Backend Call - API (ParentLogin)] action in Button widget.
+  // Stores action output result for [Backend Call - API (Verify User Information)] action in Button widget.
   ApiCallResponse? apiResult6tf;
 
   @override

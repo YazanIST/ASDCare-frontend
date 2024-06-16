@@ -20,3 +20,5 @@ export '/pages/parent_main_flow/parent_home/parent_home_widget.dart'
     show ParentHomeWidget;
 export '/pages/parent_main_flow/parent_onboarding/parent_onboarding_widget.dart'
     show ParentOnboardingWidget;
+export '/pages/parent_main_flow/adding_child_guide/adding_child_guide_widget.dart'
+    show AddingChildGuideWidget;

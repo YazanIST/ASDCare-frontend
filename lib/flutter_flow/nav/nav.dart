@@ -121,6 +121,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ParentOnboarding',
           path: '/parentOnboarding',
           builder: (context, params) => ParentOnboardingWidget(),
+        ),
+        FFRoute(
+          name: 'AddingChildGuide',
+          path: '/addingChildGuide',
+          builder: (context, params) => AddingChildGuideWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -60,7 +60,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
               snap: true,
               automaticallyImplyLeading: false,
               title: FutureBuilder<ApiCallResponse>(
-                future: GetUsernameCall.call(
+                future: AuthServiceGroup.getUsernameCall.call(
                   authToken: FFAppState().authToken,
                 ),
                 builder: (context, snapshot) {
