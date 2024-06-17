@@ -43,7 +43,9 @@ class SendUserPINCall {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
-{"email": "${email}"}''';
+{
+  "email": "${email}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send User PIN',
       apiUrl: '${baseUrl}/auth/verify/user/email/send-pin',
@@ -145,10 +147,19 @@ class RegisterChildCall {
     String? firstName = '',
     String? lastName = '',
     String? parentEmail = '',
-    String? dateOfBirth = '',
+    String? birthDate = '',
   }) async {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
+    final ffApiRequestBody = '''
+{
+  "email": "${email}",
+  "password": "${password}",
+  "firstName": "${firstName}",
+  "lastName": "${lastName}",
+  "parentEmail": "${parentEmail}",
+  "birthDate": "${birthDate}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register Child',
       apiUrl: '${baseUrl}/auth/register/child',
@@ -157,6 +168,7 @@ class RegisterChildCall {
         'ngrok-skip-browser-warning': 'true',
       },
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

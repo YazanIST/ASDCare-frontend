@@ -7,30 +7,25 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'parent_home_model.dart';
-export 'parent_home_model.dart';
+import 'child_home_model.dart';
+export 'child_home_model.dart';
 
-class ParentHomeWidget extends StatefulWidget {
-  const ParentHomeWidget({
-    super.key,
-    required this.childEmail,
-  });
-
-  final String? childEmail;
+class ChildHomeWidget extends StatefulWidget {
+  const ChildHomeWidget({super.key});
 
   @override
-  State<ParentHomeWidget> createState() => _ParentHomeWidgetState();
+  State<ChildHomeWidget> createState() => _ChildHomeWidgetState();
 }
 
-class _ParentHomeWidgetState extends State<ParentHomeWidget> {
-  late ParentHomeModel _model;
+class _ChildHomeWidgetState extends State<ChildHomeWidget> {
+  late ChildHomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ParentHomeModel());
+    _model = createModel(context, () => ChildHomeModel());
   }
 
   @override

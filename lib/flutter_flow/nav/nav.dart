@@ -126,6 +126,89 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'AddingChildGuide',
           path: '/addingChildGuide',
           builder: (context, params) => AddingChildGuideWidget(),
+        ),
+        FFRoute(
+          name: 'Chat',
+          path: '/chat',
+          builder: (context, params) => ChatWidget(),
+        ),
+        FFRoute(
+          name: 'ChildHome',
+          path: '/childHome',
+          builder: (context, params) => ChildHomeWidget(),
+        ),
+        FFRoute(
+          name: 'ChildRegister',
+          path: '/childRegister',
+          builder: (context, params) => ChildRegisterWidget(),
+        ),
+        FFRoute(
+          name: 'VerifyChildEmail',
+          path: '/verifyChildEmail',
+          builder: (context, params) => VerifyChildEmailWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+            password: params.getParam(
+              'password',
+              ParamType.String,
+            ),
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+            parentEmail: params.getParam(
+              'parentEmail',
+              ParamType.String,
+            ),
+            birthdate: params.getParam(
+              'birthdate',
+              ParamType.String,
+            ),
+            pincode: params.getParam(
+              'pincode',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'VerifyParentEmail',
+          path: '/verifyParentEmail',
+          builder: (context, params) => VerifyParentEmailWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+            password: params.getParam(
+              'password',
+              ParamType.String,
+            ),
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+            parentEmail: params.getParam(
+              'parentEmail',
+              ParamType.String,
+            ),
+            birthdate: params.getParam(
+              'birthdate',
+              ParamType.String,
+            ),
+            pincode: params.getParam(
+              'pincode',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

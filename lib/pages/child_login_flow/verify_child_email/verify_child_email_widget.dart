@@ -6,22 +6,40 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'child_login_model.dart';
-export 'child_login_model.dart';
+import 'verify_child_email_model.dart';
+export 'verify_child_email_model.dart';
 
-class ChildLoginWidget extends StatefulWidget {
-  const ChildLoginWidget({super.key});
+class VerifyChildEmailWidget extends StatefulWidget {
+  const VerifyChildEmailWidget({
+    super.key,
+    required this.childEmail,
+    required this.password,
+    required this.firstName,
+    required this.lastName,
+    required this.parentEmail,
+    required this.birthdate,
+    required this.pincode,
+  });
+
+  final String? childEmail;
+  final String? password;
+  final String? firstName;
+  final String? lastName;
+  final String? parentEmail;
+  final String? birthdate;
+  final String? pincode;
 
   @override
-  State<ChildLoginWidget> createState() => _ChildLoginWidgetState();
+  State<VerifyChildEmailWidget> createState() => _VerifyChildEmailWidgetState();
 }
 
-class _ChildLoginWidgetState extends State<ChildLoginWidget>
+class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
     with TickerProviderStateMixin {
-  late ChildLoginModel _model;
+  late VerifyChildEmailModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -30,13 +48,10 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChildLoginModel());
+    _model = createModel(context, () => VerifyChildEmailModel());
 
-    _model.emailTextController ??= TextEditingController();
-    _model.emailFocusNode ??= FocusNode();
-
-    _model.passwordTextController ??= TextEditingController();
-    _model.passwordFocusNode ??= FocusNode();
+    _model.enteredPincodeTextController ??= TextEditingController();
+    _model.enteredPincodeFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -146,7 +161,7 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
-                      'Log in as a child',
+                      'Verify child email',
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
@@ -157,9 +172,9 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(35.0, 12.0, 35.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(29.0, 12.0, 29.0, 0.0),
                     child: Text(
-                      'Let\'s embark upon this journey together!',
+                      'Check your child-email for the 6-digit PIN code',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Readex Pro',
@@ -185,13 +200,13 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                         child: Container(
                           width: double.infinity,
                           child: TextFormField(
-                            controller: _model.emailTextController,
-                            focusNode: _model.emailFocusNode,
+                            controller: _model.enteredPincodeTextController,
+                            focusNode: _model.enteredPincodeFocusNode,
                             autofocus: true,
-                            autofillHints: [AutofillHints.email],
+                            autofillHints: [AutofillHints.oneTimeCode],
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Email',
+                              labelText: 'PIN Code',
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -237,119 +252,20 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: _model.emailTextControllerValidator
+                            maxLength: 6,
+                            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                            buildCounter: (context,
+                                    {required currentLength,
+                                    required isFocused,
+                                    maxLength}) =>
+                                null,
+                            keyboardType: TextInputType.number,
+                            validator: _model
+                                .enteredPincodeTextControllerValidator
                                 .asValidator(context),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Container(
-                          width: double.infinity,
-                          child: TextFormField(
-                            controller: _model.passwordTextController,
-                            focusNode: _model.passwordFocusNode,
-                            autofocus: false,
-                            autofillHints: [AutofillHints.password],
-                            obscureText: !_model.passwordVisibility,
-                            decoration: InputDecoration(
-                              labelText: 'Password',
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
-                              suffixIcon: InkWell(
-                                onTap: () => setState(
-                                  () => _model.passwordVisibility =
-                                      !_model.passwordVisibility,
-                                ),
-                                focusNode: FocusNode(skipTraversal: true),
-                                child: Icon(
-                                  _model.passwordVisibility
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            validator: _model.passwordTextControllerValidator
-                                .asValidator(context),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 15.0),
-                          child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: 'Forgot password?',
-                            options: FFButtonOptions(
-                              width: 125.0,
-                              height: 20.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.transparent,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                            ],
                           ),
                         ),
                       ),
@@ -357,31 +273,77 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 7.0),
+                              0.0, 0.0, 0.0, 4.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               var _shouldSetState = false;
-                              _model.apiResult0j9 = await AuthServiceGroup
-                                  .verifyUserInformationCall
-                                  .call(
-                                email: _model.emailTextController.text,
-                                password: _model.passwordTextController.text,
-                                userType: 'CHILD',
-                              );
-                              _shouldSetState = true;
-                              if ((_model.apiResult0j9?.succeeded ?? true)) {
-                                FFAppState().authToken =
-                                    (_model.apiResult0j9?.bodyText ?? '');
+                              if (widget.pincode ==
+                                  _model.enteredPincodeTextController.text) {
+                                _model.apiResult8gs =
+                                    await AuthServiceGroup.sendUserPINCall.call(
+                                  email: widget.parentEmail,
+                                );
+                                _shouldSetState = true;
+                                if ((_model.apiResult8gs?.succeeded ?? true)) {
+                                  context.pushNamed(
+                                    'VerifyParentEmail',
+                                    queryParameters: {
+                                      'childEmail': serializeParam(
+                                        widget.childEmail,
+                                        ParamType.String,
+                                      ),
+                                      'password': serializeParam(
+                                        widget.password,
+                                        ParamType.String,
+                                      ),
+                                      'firstName': serializeParam(
+                                        widget.firstName,
+                                        ParamType.String,
+                                      ),
+                                      'lastName': serializeParam(
+                                        widget.lastName,
+                                        ParamType.String,
+                                      ),
+                                      'parentEmail': serializeParam(
+                                        widget.parentEmail,
+                                        ParamType.String,
+                                      ),
+                                      'birthdate': serializeParam(
+                                        widget.birthdate,
+                                        ParamType.String,
+                                      ),
+                                      'pincode': serializeParam(
+                                        (_model.apiResult8gs?.bodyText ?? ''),
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
 
-                                context.pushNamed('ChildHome');
-
-                                if (_shouldSetState) setState(() {});
-                                return;
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Something went wrong',
+                                        style: TextStyle(
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Invalid email or password',
+                                      'Incorrect PIN code',
                                       style: TextStyle(
                                         color:
                                             FlutterFlowTheme.of(context).info,
@@ -398,7 +360,7 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
 
                               if (_shouldSetState) setState(() {});
                             },
-                            text: 'Log In',
+                            text: 'Continue',
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 52.0,
@@ -424,26 +386,19 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                           ),
                         ),
                       ),
-                      Opacity(
-                        opacity: 0.5,
-                        child: Divider(
-                          thickness: 1.0,
-                          color: FlutterFlowTheme.of(context).accent1,
-                        ),
-                      ),
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 0.0),
+                              0.0, 4.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('ChildRegister');
+                            onPressed: () {
+                              print('Button pressed ...');
                             },
-                            text: 'Register Now',
+                            text: 'Send the code again',
                             options: FFButtonOptions(
                               width: 230.0,
-                              height: 52.0,
+                              height: 40.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(

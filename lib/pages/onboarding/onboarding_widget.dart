@@ -263,8 +263,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed('ChildLogin');
                                 },
                                 text: 'Child',
                                 options: FFButtonOptions(
