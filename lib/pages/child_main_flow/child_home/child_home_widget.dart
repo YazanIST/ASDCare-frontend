@@ -131,8 +131,8 @@ class _ChildHomeWidgetState extends State<ChildHomeWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              context.pushNamed('DrawingGame');
                             },
                             text: 'Let\'s play the drawing game!!',
                             options: FFButtonOptions(
