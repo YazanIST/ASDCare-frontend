@@ -1,10 +1,7 @@
 import 'dart:convert';
-import 'dart:typed_data';
-import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
 
-import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -44,11 +41,11 @@ class SendUserPINCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}"
+  "email": "$email"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send User PIN',
-      apiUrl: '${baseUrl}/auth/verify/user/email/send-pin',
+      apiUrl: '$baseUrl/auth/verify/user/email/send-pin',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -74,7 +71,7 @@ class SendPINToParentForChildLinkingCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Send PIN to Parent for Child Linking',
-      apiUrl: '${baseUrl}/auth/link/child/parent/send-pin',
+      apiUrl: '$baseUrl/auth/link/child/parent/send-pin',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -99,7 +96,7 @@ class SendPINToDoctorForChildLinkingCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Send PIN to Doctor for Child Linking',
-      apiUrl: '${baseUrl}/auth/link/child/doctor/send-pin',
+      apiUrl: '$baseUrl/auth/link/child/doctor/send-pin',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -124,7 +121,7 @@ class ConfirmChildLinkingWithDoctorCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Confirm Child Linking with Doctor',
-      apiUrl: '${baseUrl}/auth/link/child/doctor/confirmed',
+      apiUrl: '$baseUrl/auth/link/child/doctor/confirmed',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -153,16 +150,16 @@ class RegisterChildCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}",
-  "password": "${password}",
-  "firstName": "${firstName}",
-  "lastName": "${lastName}",
-  "parentEmail": "${parentEmail}",
-  "birthDate": "${birthDate}"
+  "email": "$email",
+  "password": "$password",
+  "firstName": "$firstName",
+  "lastName": "$lastName",
+  "parentEmail": "$parentEmail",
+  "birthDate": "$birthDate"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register Child',
-      apiUrl: '${baseUrl}/auth/register/child',
+      apiUrl: '$baseUrl/auth/register/child',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -187,10 +184,10 @@ class FetchParentsChildrenEmailsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Fetch Parents Children Emails',
-      apiUrl: '${baseUrl}/auth/get/parent/children',
+      apiUrl: '$baseUrl/auth/get/parent/children',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': '${authToken}',
+        'Authorization': '$authToken',
         'ngrok-skip-browser-warning': 'True',
       },
       params: {},
@@ -213,13 +210,13 @@ class RegisterParentCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}",
-  "password": "${password}",
-  "username": "${username}"
+  "email": "$email",
+  "password": "$password",
+  "username": "$username"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register Parent',
-      apiUrl: '${baseUrl}/auth/register/parent',
+      apiUrl: '$baseUrl/auth/register/parent',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -246,13 +243,13 @@ class VerifyUserInformationCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "${email}",
-  "password": "${password}",
-  "userType": "${userType}"
+  "email": "$email",
+  "password": "$password",
+  "userType": "$userType"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Verify User Information',
-      apiUrl: '${baseUrl}/auth/login/user',
+      apiUrl: '$baseUrl/auth/login/user',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -275,7 +272,7 @@ class ValidateUserTokenCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Validate User Token',
-      apiUrl: '${baseUrl}/auth/validate/user/token',
+      apiUrl: '$baseUrl/auth/validate/user/token',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -297,7 +294,7 @@ class GetParentEmailCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get Parent Email',
-      apiUrl: '${baseUrl}/auth/get/child/parent',
+      apiUrl: '$baseUrl/auth/get/child/parent',
       callType: ApiCallType.GET,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -318,7 +315,7 @@ class GetDoctorEmailCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get Doctor Email',
-      apiUrl: '${baseUrl}/auth/get/child/doctor',
+      apiUrl: '$baseUrl/auth/get/child/doctor',
       callType: ApiCallType.GET,
       headers: {
         'ngrok-skip-browser-warning': 'true',
@@ -341,11 +338,11 @@ class FetchChildsAgeCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Fetch Childs Age',
-      apiUrl: '${baseUrl}/auth/get/child/age',
+      apiUrl: '$baseUrl/auth/get/child/age',
       callType: ApiCallType.GET,
       headers: {
         'ngrok-skip-browser-warning': 'true',
-        'Authorization': '${authToken}',
+        'Authorization': '$authToken',
       },
       params: {},
       returnBody: true,
@@ -365,10 +362,10 @@ class GetUsernameCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'Get Username',
-      apiUrl: '${baseUrl}/auth/get/username',
+      apiUrl: '$baseUrl/auth/get/username',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': '${authToken}',
+        'Authorization': '$authToken',
         'ngrok-skip-browser-warning': 'True',
       },
       params: {},

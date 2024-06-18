@@ -31,3 +31,5 @@ export '/pages/child_login_flow/verify_child_email/verify_child_email_widget.dar
     show VerifyChildEmailWidget;
 export '/pages/child_login_flow/verify_parent_email/verify_parent_email_widget.dart'
     show VerifyParentEmailWidget;
+export '/pages/child_main_flow/drawing_game/drawing_game_widget.dart'
+    show DrawingGameWidget;

@@ -3,13 +3,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'child_register_model.dart';
 export 'child_register_model.dart';
 
@@ -67,8 +62,8 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -87,8 +82,8 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -106,15 +101,15 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 60.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -141,11 +136,11 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
             gradient: LinearGradient(
               colors: [
                 FlutterFlowTheme.of(context).primaryBackground,
-                Color(0xFFE5F1FB)
+                const Color(0xFFE5F1FB)
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
@@ -157,7 +152,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       'Create a new child account',
                       style:
@@ -170,7 +165,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(35.0, 12.0, 35.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(35.0, 12.0, 35.0, 0.0),
                     child: Text(
                       'Keeping track of your children\'s progress made easier than ever!',
                       textAlign: TextAlign.center,
@@ -184,24 +179,24 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 15.0, 16.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 15.0, 16.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.childEmailTextController,
                             focusNode: _model.childEmailFocusNode,
                             autofocus: false,
-                            autofillHints: [AutofillHints.email],
+                            autofillHints: const [AutofillHints.email],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Child email',
@@ -242,7 +237,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
+                              contentPadding: const EdgeInsets.all(24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -258,14 +253,14 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.parentEmailTextController,
                             focusNode: _model.parentEmailFocusNode,
                             autofocus: false,
-                            autofillHints: [AutofillHints.email],
+                            autofillHints: const [AutofillHints.email],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Parent email',
@@ -306,7 +301,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
+                              contentPadding: const EdgeInsets.all(24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -324,17 +319,17 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 8.0, 16.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 175.0,
                                 child: TextFormField(
                                   controller: _model.firstNameTextController,
                                   focusNode: _model.firstNameFocusNode,
                                   autofocus: false,
-                                  autofillHints: [AutofillHints.name],
+                                  autofillHints: const [AutofillHints.name],
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'First name',
@@ -380,7 +375,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     filled: true,
-                                    contentPadding: EdgeInsets.all(24.0),
+                                    contentPadding: const EdgeInsets.all(24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -397,17 +392,17 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
+                            alignment: const AlignmentDirectional(1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 16.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 175.0,
                                 child: TextFormField(
                                   controller: _model.lastNameTextController,
                                   focusNode: _model.lastNameFocusNode,
                                   autofocus: false,
-                                  autofillHints: [AutofillHints.name],
+                                  autofillHints: const [AutofillHints.name],
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Last name',
@@ -452,7 +447,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     filled: true,
-                                    contentPadding: EdgeInsets.all(24.0),
+                                    contentPadding: const EdgeInsets.all(24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -470,13 +465,13 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 16.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final _datePickedDate = await showDatePicker(
+                              final datePickedDate = await showDatePicker(
                                 context: context,
                                 initialDate: getCurrentTimestamp,
                                 firstDate: (DateTime.fromMicrosecondsSinceEpoch(
@@ -520,12 +515,12 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                 },
                               );
 
-                              if (_datePickedDate != null) {
+                              if (datePickedDate != null) {
                                 safeSetState(() {
                                   _model.datePicked = DateTime(
-                                    _datePickedDate.year,
-                                    _datePickedDate.month,
-                                    _datePickedDate.day,
+                                    datePickedDate.year,
+                                    datePickedDate.month,
+                                    datePickedDate.day,
                                   );
                                 });
                               }
@@ -535,11 +530,11 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 56.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFE4E9EC),
+                              color: const Color(0xFFE4E9EC),
                               textStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -560,14 +555,14 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.passwordTextController,
                             focusNode: _model.passwordFocusNode,
                             autofocus: false,
-                            autofillHints: [AutofillHints.password],
+                            autofillHints: const [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
@@ -606,7 +601,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
+                              contentPadding: const EdgeInsets.all(24.0),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
                                   () => _model.passwordVisibility =
@@ -636,14 +631,14 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.confirmPasswordTextController,
                             focusNode: _model.confirmPasswordFocusNode,
                             autofocus: false,
-                            autofillHints: [AutofillHints.password],
+                            autofillHints: const [AutofillHints.password],
                             obscureText: !_model.confirmPasswordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Confirm Password',
@@ -682,7 +677,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
+                              contentPadding: const EdgeInsets.all(24.0),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
                                   () => _model.confirmPasswordVisibility =
@@ -712,20 +707,20 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 7.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              var _shouldSetState = false;
+                              var shouldSetState = false;
                               if (_model.passwordTextController.text ==
                                   _model.confirmPasswordTextController.text) {
                                 _model.apiResult60d =
                                     await AuthServiceGroup.sendUserPINCall.call(
                                   email: _model.childEmailTextController.text,
                                 );
-                                _shouldSetState = true;
+                                shouldSetState = true;
                                 if ((_model.apiResult60d?.succeeded ?? true)) {
                                   context.pushNamed(
                                     'VerifyChildEmail',
@@ -762,7 +757,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                     }.withoutNulls,
                                   );
 
-                                  if (_shouldSetState) setState(() {});
+                                  if (shouldSetState) setState(() {});
                                   return;
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -774,12 +769,12 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                               FlutterFlowTheme.of(context).info,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).error,
                                     ),
                                   );
-                                  if (_shouldSetState) setState(() {});
+                                  if (shouldSetState) setState(() {});
                                   return;
                                 }
                               } else {
@@ -792,24 +787,24 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                             FlutterFlowTheme.of(context).info,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).error,
                                   ),
                                 );
-                                if (_shouldSetState) setState(() {});
+                                if (shouldSetState) setState(() {});
                                 return;
                               }
 
-                              if (_shouldSetState) setState(() {});
+                              if (shouldSetState) setState(() {});
                             },
                             text: 'Continue',
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 52.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -820,7 +815,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -837,9 +832,9 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -849,11 +844,11 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 52.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0x5088B5C4),
+                              color: const Color(0x5088B5C4),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(

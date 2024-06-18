@@ -1,25 +1,25 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'chat_model.dart';
-export 'chat_model.dart';
+import 'drawing_game_model.dart';
+export 'drawing_game_model.dart';
 
-class ChatWidget extends StatefulWidget {
-  const ChatWidget({super.key});
+class DrawingGameWidget extends StatefulWidget {
+  const DrawingGameWidget({super.key});
 
   @override
-  State<ChatWidget> createState() => _ChatWidgetState();
+  State<DrawingGameWidget> createState() => _DrawingGameWidgetState();
 }
 
-class _ChatWidgetState extends State<ChatWidget> {
-  late ChatModel _model;
+class _DrawingGameWidgetState extends State<DrawingGameWidget> {
+  late DrawingGameModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChatModel());
+    _model = createModel(context, () => DrawingGameModel());
   }
 
   @override

@@ -2,14 +2,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'adding_child_guide_model.dart';
 export 'adding_child_guide_model.dart';
 
@@ -49,8 +45,8 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(3.0, 3.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(3.0, 3.0),
+            end: const Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -79,33 +75,33 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
             gradient: LinearGradient(
               colors: [
                 FlutterFlowTheme.of(context).primaryBackground,
-                Color(0xFFE5F1FB)
+                const Color(0xFFE5F1FB)
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: 654.0,
                   child: Stack(
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                         child: PageView(
                           controller: _model.pageViewController ??=
                               PageController(initialPage: 0),
                           scrollDirection: Axis.horizontal,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -113,25 +109,45 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 12.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1677668804466-64aae62eb2d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-                                          width: double.infinity,
-                                          height: 300.0,
-                                          fit: BoxFit.cover,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          53.0, 0.0, 53.0, 15.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 10.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                spreadRadius: 1.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            child: Image.asset(
+                                              'assets/images/guide_1.png',
+                                              width: double.infinity,
+                                              height: 300.0,
+                                              fit: BoxFit.fitHeight,
+                                              alignment: const Alignment(0.0, 0.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      'Header One',
+                                      'Step 1',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -141,10 +157,10 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 0.0),
                                     child: Text(
-                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                                      'Go back to the onboarding page and choose to login as a Child.',
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -157,7 +173,7 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -165,25 +181,45 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 12.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1678115039222-662c78072a6b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60',
-                                          width: double.infinity,
-                                          height: 300.0,
-                                          fit: BoxFit.cover,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          53.0, 0.0, 53.0, 15.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 15.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                spreadRadius: 3.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            child: Image.asset(
+                                              'assets/images/guide_2.png',
+                                              width: double.infinity,
+                                              height: 300.0,
+                                              fit: BoxFit.fitHeight,
+                                              alignment: const Alignment(0.0, 0.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      'Header Two',
+                                      'Step 2',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -193,10 +229,10 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 0.0),
                                     child: Text(
-                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                                      'If this is your first child to add, choose \"Register Now\".',
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -209,7 +245,7 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -217,25 +253,45 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 12.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1678132852119-c03c2e7d2740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60',
-                                          width: double.infinity,
-                                          height: 300.0,
-                                          fit: BoxFit.cover,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          53.0, 0.0, 53.0, 15.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 15.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                spreadRadius: 3.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            child: Image.asset(
+                                              'assets/images/guide_3.png',
+                                              width: double.infinity,
+                                              height: 300.0,
+                                              fit: BoxFit.fitHeight,
+                                              alignment: const Alignment(0.0, 0.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      'Header Three',
+                                      'Step 3',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
                                           .override(
@@ -245,10 +301,154 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 0.0),
                                     child: Text(
-                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                                      'Fill all your child information, and use your email as the \"Parent email\".',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          53.0, 0.0, 53.0, 15.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 15.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                spreadRadius: 3.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            child: Image.asset(
+                                              'assets/images/guide_4.png',
+                                              width: double.infinity,
+                                              height: 300.0,
+                                              fit: BoxFit.fitHeight,
+                                              alignment: const Alignment(0.0, 0.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Step 4',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 4.0, 12.0, 0.0),
+                                    child: Text(
+                                      'First, check your child email for the PIN code for verfication.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          53.0, 0.0, 53.0, 15.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 0.0,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 15.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                spreadRadius: 3.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                            child: Image.asset(
+                                              'assets/images/guide_5.png',
+                                              width: double.infinity,
+                                              height: 300.0,
+                                              fit: BoxFit.fitHeight,
+                                              alignment: const Alignment(0.0, 0.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Step 5',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 4.0, 12.0, 0.0),
+                                    child: Text(
+                                      'Now, check your email to confirm linking your child account with yours, that\'s it!!',
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -264,19 +464,19 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: const AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 10.0),
                           child: smooth_page_indicator.SmoothPageIndicator(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
-                            count: 3,
+                            count: 5,
                             axisDirection: Axis.horizontal,
                             onDotClicked: (i) async {
                               await _model.pageViewController!.animateToPage(
                                 i,
-                                duration: Duration(milliseconds: 500),
+                                duration: const Duration(milliseconds: 500),
                                 curve: Curves.ease,
                               );
                               setState(() {});
@@ -287,9 +487,9 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                               radius: 16.0,
                               dotWidth: 16.0,
                               dotHeight: 4.0,
-                              dotColor: FlutterFlowTheme.of(context).alternate,
+                              dotColor: FlutterFlowTheme.of(context).secondary,
                               activeDotColor:
-                                  FlutterFlowTheme.of(context).primaryText,
+                                  FlutterFlowTheme.of(context).primary,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),
@@ -299,7 +499,7 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: Wrap(
                     spacing: 16.0,
                     runSpacing: 16.0,
@@ -318,11 +518,11 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0x5088B5C4),
+                          color: const Color(0x5088B5C4),
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
@@ -341,7 +541,7 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                       FFButtonWidget(
                         onPressed: () async {
                           await _model.pageViewController?.nextPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.ease,
                           );
                         },
@@ -349,9 +549,9 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                         options: FFButtonOptions(
                           width: 150.0,
                           height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -361,7 +561,7 @@ class _AddingChildGuideWidgetState extends State<AddingChildGuideWidget>
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 1.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

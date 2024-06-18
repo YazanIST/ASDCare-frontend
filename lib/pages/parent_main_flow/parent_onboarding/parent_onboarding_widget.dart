@@ -3,12 +3,8 @@ import '/components/empty_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'parent_onboarding_model.dart';
 export 'parent_onboarding_model.dart';
@@ -49,8 +45,8 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: Offset(3.0, 3.0),
-            end: Offset(1.0, 1.0),
+            begin: const Offset(3.0, 3.0),
+            end: const Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -69,8 +65,8 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
             curve: Curves.easeInOut,
             delay: 350.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -89,8 +85,8 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -126,23 +122,23 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                   gradient: LinearGradient(
                     colors: [
                       FlutterFlowTheme.of(context).primaryBackground,
-                      Color(0xFFE5F1FB)
+                      const Color(0xFFE5F1FB)
                     ],
-                    stops: [0.0, 1.0],
-                    begin: AlignmentDirectional(0.0, -1.0),
-                    end: AlignmentDirectional(0, 1.0),
+                    stops: const [0.0, 1.0],
+                    begin: const AlignmentDirectional(0.0, -1.0),
+                    end: const AlignmentDirectional(0, 1.0),
                   ),
                 ),
                 child: Container(
                   width: 100.0,
                   height: 100.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 15.0, 0.0, 15.0),
                         child: FutureBuilder<ApiCallResponse>(
                           future: AuthServiceGroup.getUsernameCall.call(
@@ -180,7 +176,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
                         child: Text(
                           'Which child do you want to keep track of?',
                           textAlign: TextAlign.center,
@@ -222,8 +218,8 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                 r'''$[*]''',
                               ).toList();
                               if (childrenEmails.isEmpty) {
-                                return Center(
-                                  child: Container(
+                                return const Center(
+                                  child: SizedBox(
                                     height: 1.0,
                                     child: EmptyComponentWidget(),
                                   ),
@@ -238,7 +234,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                   final childrenEmailsItem =
                                       childrenEmails[childrenEmailsIndex];
                                   return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         65.0, 8.0, 65.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -262,7 +258,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x20000000),
@@ -280,10 +276,10 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                           ),
                                         ),
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 8.0, 12.0, 8.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -312,7 +308,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -355,7 +351,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                         },
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             65.0, 8.0, 65.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -369,7 +365,7 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primary,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x20000000),
@@ -385,9 +381,9 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                 width: 0.0,
                               ),
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 12.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,

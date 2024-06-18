@@ -3,13 +3,9 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'verify_child_email_model.dart';
 export 'verify_child_email_model.dart';
 
@@ -69,8 +65,8 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -89,8 +85,8 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
             curve: Curves.easeInOut,
             delay: 150.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 30.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -108,15 +104,15 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(0.0, 60.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 400.0.ms,
-            begin: Offset(-0.349, 0),
-            end: Offset(0, 0),
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
           ),
         ],
       ),
@@ -143,11 +139,11 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
             gradient: LinearGradient(
               colors: [
                 FlutterFlowTheme.of(context).primaryBackground,
-                Color(0xFFE5F1FB)
+                const Color(0xFFE5F1FB)
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
@@ -159,7 +155,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       'Verify child email',
                       style:
@@ -172,7 +168,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(29.0, 12.0, 29.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(29.0, 12.0, 29.0, 0.0),
                     child: Text(
                       'Check your child-email for the 6-digit PIN code',
                       textAlign: TextAlign.center,
@@ -186,24 +182,24 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 15.0, 16.0, 16.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 15.0, 16.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                        child: Container(
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: TextFormField(
                             controller: _model.enteredPincodeTextController,
                             focusNode: _model.enteredPincodeFocusNode,
                             autofocus: true,
-                            autofillHints: [AutofillHints.oneTimeCode],
+                            autofillHints: const [AutofillHints.oneTimeCode],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'PIN Code',
@@ -244,7 +240,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              contentPadding: EdgeInsets.all(24.0),
+                              contentPadding: const EdgeInsets.all(24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -270,20 +266,20 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 4.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              var _shouldSetState = false;
+                              var shouldSetState = false;
                               if (widget.pincode ==
                                   _model.enteredPincodeTextController.text) {
                                 _model.apiResult8gs =
                                     await AuthServiceGroup.sendUserPINCall.call(
                                   email: widget.parentEmail,
                                 );
-                                _shouldSetState = true;
+                                shouldSetState = true;
                                 if ((_model.apiResult8gs?.succeeded ?? true)) {
                                   context.pushNamed(
                                     'VerifyParentEmail',
@@ -319,7 +315,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                     }.withoutNulls,
                                   );
 
-                                  if (_shouldSetState) setState(() {});
+                                  if (shouldSetState) setState(() {});
                                   return;
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -331,12 +327,12 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                               FlutterFlowTheme.of(context).info,
                                         ),
                                       ),
-                                      duration: Duration(milliseconds: 4000),
+                                      duration: const Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).error,
                                     ),
                                   );
-                                  if (_shouldSetState) setState(() {});
+                                  if (shouldSetState) setState(() {});
                                   return;
                                 }
                               } else {
@@ -349,24 +345,24 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                             FlutterFlowTheme.of(context).info,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
                                         FlutterFlowTheme.of(context).error,
                                   ),
                                 );
-                                if (_shouldSetState) setState(() {});
+                                if (shouldSetState) setState(() {});
                                 return;
                               }
 
-                              if (_shouldSetState) setState(() {});
+                              if (shouldSetState) setState(() {});
                             },
                             text: 'Continue',
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 52.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -377,7 +373,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -387,9 +383,9 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () {
@@ -399,11 +395,11 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0x5088B5C4),
+                              color: const Color(0x5088B5C4),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(

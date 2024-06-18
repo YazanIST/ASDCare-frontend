@@ -1,11 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'parent_home_model.dart';
 export 'parent_home_model.dart';
@@ -88,7 +86,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                   );
                 },
               ),
-              actions: [],
+              actions: const [],
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                   decoration: BoxDecoration(
@@ -97,11 +95,11 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                         FlutterFlowTheme.of(context).primary,
                         FlutterFlowTheme.of(context).primaryBackground
                       ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.0, -1.0),
-                      end: AlignmentDirectional(0, 1.0),
+                      stops: const [0.0, 1.0],
+                      begin: const AlignmentDirectional(0.0, -1.0),
+                      end: const AlignmentDirectional(0, 1.0),
                     ),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(0.0),
@@ -121,11 +119,11 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                   gradient: LinearGradient(
                     colors: [
                       FlutterFlowTheme.of(context).primaryBackground,
-                      Color(0xFFE5F1FB)
+                      const Color(0xFFE5F1FB)
                     ],
-                    stops: [0.0, 1.0],
-                    begin: AlignmentDirectional(0.0, -1.0),
-                    end: AlignmentDirectional(0, 1.0),
+                    stops: const [0.0, 1.0],
+                    begin: const AlignmentDirectional(0.0, -1.0),
+                    end: const AlignmentDirectional(0, 1.0),
                   ),
                 ),
                 child: SingleChildScrollView(
@@ -134,12 +132,12 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x25090F13),
@@ -152,16 +150,16 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                             gradient: LinearGradient(
                               colors: [
                                 FlutterFlowTheme.of(context).primaryBackground,
-                                Color(0xFFE5F1FB)
+                                const Color(0xFFE5F1FB)
                               ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.0, -1.0),
-                              end: AlignmentDirectional(0, 1.0),
+                              stops: const [0.0, 1.0],
+                              begin: const AlignmentDirectional(0.0, -1.0),
+                              end: const AlignmentDirectional(0, 1.0),
                             ),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 12.0, 12.0, 16.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -273,7 +271,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 0.0, 0.0),
                         child: Text(
                           'Insights about [name] progress',
@@ -294,13 +292,13 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                         scrollDirection: Axis.vertical,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 100.0,
                               decoration: BoxDecoration(
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 3.0,
                                     color: Color(0x411D2429),
@@ -314,21 +312,21 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                   colors: [
                                     FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    Color(0xFFE5F1FB)
+                                    const Color(0xFFE5F1FB)
                                   ],
-                                  stops: [0.0, 1.0],
-                                  begin: AlignmentDirectional(0.0, -1.0),
-                                  end: AlignmentDirectional(0, 1.0),
+                                  stops: const [0.0, 1.0],
+                                  begin: const AlignmentDirectional(0.0, -1.0),
+                                  end: const AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 1.0, 1.0, 1.0),
                                       child: ClipRRect(
                                         borderRadius:
@@ -343,7 +341,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 4.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -375,7 +373,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -402,13 +400,13 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 100.0,
                               decoration: BoxDecoration(
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 3.0,
                                     color: Color(0x411D2429),
@@ -422,21 +420,21 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                   colors: [
                                     FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                    Color(0xFFE5F1FB)
+                                    const Color(0xFFE5F1FB)
                                   ],
-                                  stops: [0.0, 1.0],
-                                  begin: AlignmentDirectional(0.0, -1.0),
-                                  end: AlignmentDirectional(0, 1.0),
+                                  stops: const [0.0, 1.0],
+                                  begin: const AlignmentDirectional(0.0, -1.0),
+                                  end: const AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 1.0, 1.0, 1.0),
                                       child: ClipRRect(
                                         borderRadius:
@@ -451,7 +449,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 4.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -471,7 +469,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                                       ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 8.0, 0.0),
                                               child: AutoSizeText(
                                                 'Learn how to brew a delicious pourover every morning.',
@@ -500,7 +498,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Icon(
                                             Icons.chevron_right_rounded,
@@ -511,7 +509,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 4.0, 8.0),
                                           child: Text(
                                             '2m',
@@ -534,7 +532,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 0.0, 0.0),
                         child: Text(
                           'Feedback',
@@ -549,7 +547,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 12.0, 0.0, 44.0),
                         child: ListView(
                           padding: EdgeInsets.zero,
@@ -558,12 +556,12 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                           scrollDirection: Axis.vertical,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       blurRadius: 7.0,
                                       color: Color(0x2F1D2429),
@@ -579,14 +577,14 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                           .primaryBackground,
                                       FlutterFlowTheme.of(context).secondary
                                     ],
-                                    stops: [0.0, 1.0],
-                                    begin: AlignmentDirectional(0.0, -1.0),
-                                    end: AlignmentDirectional(0, 1.0),
+                                    stops: const [0.0, 1.0],
+                                    begin: const AlignmentDirectional(0.0, -1.0),
+                                    end: const AlignmentDirectional(0, 1.0),
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -601,7 +599,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -630,7 +628,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF57636C),
+                                                    color: const Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
@@ -646,7 +644,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF57636C),
+                                                    color: const Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
@@ -662,7 +660,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF57636C),
+                                                    color: const Color(0xFF57636C),
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
@@ -673,7 +671,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,

@@ -1,19 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
 
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -38,27 +31,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => OnboardingWidget(),
+      errorBuilder: (context, state) => const OnboardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => OnboardingWidget(),
+          builder: (context, _) => const OnboardingWidget(),
         ),
         FFRoute(
           name: 'Onboarding',
           path: '/onboarding',
-          builder: (context, params) => OnboardingWidget(),
+          builder: (context, params) => const OnboardingWidget(),
         ),
         FFRoute(
           name: 'ParentLogin',
           path: '/parentLogin',
-          builder: (context, params) => ParentLoginWidget(),
+          builder: (context, params) => const ParentLoginWidget(),
         ),
         FFRoute(
           name: 'ParentRegister',
           path: '/parentRegister',
-          builder: (context, params) => ParentRegisterWidget(),
+          builder: (context, params) => const ParentRegisterWidget(),
         ),
         FFRoute(
           name: 'VerifyParentRegister',
@@ -85,27 +78,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ParentForgotPassword',
           path: '/parentForgotPassword',
-          builder: (context, params) => ParentForgotPasswordWidget(),
+          builder: (context, params) => const ParentForgotPasswordWidget(),
         ),
         FFRoute(
           name: 'ParentResetPassword',
           path: '/parentResetPassword',
-          builder: (context, params) => ParentResetPasswordWidget(),
+          builder: (context, params) => const ParentResetPasswordWidget(),
         ),
         FFRoute(
           name: 'ChildLogin',
           path: '/childLogin',
-          builder: (context, params) => ChildLoginWidget(),
+          builder: (context, params) => const ChildLoginWidget(),
         ),
         FFRoute(
           name: 'ChildForgotPassword',
           path: '/childForgotPassword',
-          builder: (context, params) => ChildForgotPasswordWidget(),
+          builder: (context, params) => const ChildForgotPasswordWidget(),
         ),
         FFRoute(
           name: 'ChildResetPassword',
           path: '/childResetPassword',
-          builder: (context, params) => ChildResetPasswordWidget(),
+          builder: (context, params) => const ChildResetPasswordWidget(),
         ),
         FFRoute(
           name: 'ParentHome',
@@ -120,27 +113,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ParentOnboarding',
           path: '/parentOnboarding',
-          builder: (context, params) => ParentOnboardingWidget(),
+          builder: (context, params) => const ParentOnboardingWidget(),
         ),
         FFRoute(
           name: 'AddingChildGuide',
           path: '/addingChildGuide',
-          builder: (context, params) => AddingChildGuideWidget(),
+          builder: (context, params) => const AddingChildGuideWidget(),
         ),
         FFRoute(
           name: 'Chat',
           path: '/chat',
-          builder: (context, params) => ChatWidget(),
+          builder: (context, params) => const ChatWidget(),
         ),
         FFRoute(
           name: 'ChildHome',
           path: '/childHome',
-          builder: (context, params) => ChildHomeWidget(),
+          builder: (context, params) => const ChildHomeWidget(),
         ),
         FFRoute(
           name: 'ChildRegister',
           path: '/childRegister',
-          builder: (context, params) => ChildRegisterWidget(),
+          builder: (context, params) => const ChildRegisterWidget(),
         ),
         FFRoute(
           name: 'VerifyChildEmail',
@@ -209,6 +202,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'DrawingGame',
+          path: '/drawingGame',
+          builder: (context, params) => const DrawingGameWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -374,7 +372,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
