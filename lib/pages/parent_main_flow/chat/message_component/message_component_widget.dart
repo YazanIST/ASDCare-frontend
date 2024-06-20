@@ -148,7 +148,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 4.0, 0.0, 0.0),
+                                0.0, 4.0, 0.0, 0.0),
                             child: Text(
                               dateTimeFormat(
                                   'relative', widget.message!.timestamp!),
@@ -222,6 +222,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
                                   ),
                             )),
                             if (widget.message?.image != null &&
@@ -261,7 +262,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 8.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         dateTimeFormat('relative', widget.message!.timestamp!),
                         style: FlutterFlowTheme.of(context).labelSmall.override(

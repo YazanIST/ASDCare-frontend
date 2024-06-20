@@ -57,8 +57,8 @@ class _ChatWidgetState extends State<ChatWidget> {
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 20.0,
+              borderWidth: 0.0,
+              buttonSize: double.infinity,
               icon: Icon(
                 Icons.arrow_back_rounded,
                 color: FlutterFlowTheme.of(context).primaryText,
