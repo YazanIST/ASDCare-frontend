@@ -450,6 +450,511 @@ class FetchUserEmailCall {
 
 /// End AuthService Group Code
 
+/// Start ChildMonitoringService Group Code
+
+class ChildMonitoringServiceGroup {
+  static String getBaseUrl({
+    String? authToken = '',
+  }) =>
+      'https://0923-93-213-23-12.ngrok-free.app';
+  static Map<String, String> headers = {
+    'ngrok-skip-browser-warning': 'True',
+    'Authorization': '[auth_token]',
+  };
+  static GenerateGameCall generateGameCall = GenerateGameCall();
+  static GetFeedbackCall getFeedbackCall = GetFeedbackCall();
+  static FinishGameCall finishGameCall = FinishGameCall();
+  static AddParentInstructionCall addParentInstructionCall =
+      AddParentInstructionCall();
+  static AddDoctorInstructionCall addDoctorInstructionCall =
+      AddDoctorInstructionCall();
+  static GetParentInstructionsCall getParentInstructionsCall =
+      GetParentInstructionsCall();
+  static GetDoctorInstructionsCall getDoctorInstructionsCall =
+      GetDoctorInstructionsCall();
+  static IncreaseGamesPlayedCall increaseGamesPlayedCall =
+      IncreaseGamesPlayedCall();
+  static UpdateGeneralFeedbackCall updateGeneralFeedbackCall =
+      UpdateGeneralFeedbackCall();
+  static GetGeneralFeedbackCall getGeneralFeedbackCall =
+      GetGeneralFeedbackCall();
+  static GetTotalGamesPlayedCall getTotalGamesPlayedCall =
+      GetTotalGamesPlayedCall();
+  static AddGameSummaryCall addGameSummaryCall = AddGameSummaryCall();
+  static GetGameSummariesCall getGameSummariesCall = GetGameSummariesCall();
+  static DeleteParentInstructionCall deleteParentInstructionCall =
+      DeleteParentInstructionCall();
+  static DeleteDoctorInstructionCall deleteDoctorInstructionCall =
+      DeleteDoctorInstructionCall();
+}
+
+class GenerateGameCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Generate Game',
+      apiUrl: '$baseUrl/monitoring/advanced/generate/game',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetFeedbackCall {
+  Future<ApiCallResponse> call({
+    String? screenshot = '',
+    String? subject = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Feedback',
+      apiUrl: '$baseUrl/monitoring/advanced/get/feedback',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FinishGameCall {
+  Future<ApiCallResponse> call({
+    String? screenshot = '',
+    String? subject = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Finish Game',
+      apiUrl: '$baseUrl/monitoring/advanced/finish/game',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'screenshot': screenshot,
+        'subject': subject,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AddParentInstructionCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? instruction = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail",
+  "instruction": "$instruction"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Add Parent Instruction',
+      apiUrl: '$baseUrl/monitoring/add/parent/instruction',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AddDoctorInstructionCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? instruction = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail",
+  "instruction": "$instruction"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Add Doctor Instruction',
+      apiUrl: '$baseUrl/monitoring/add/doctor/instruction',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetParentInstructionsCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Parent Instructions',
+      apiUrl: '$baseUrl/monitoring/get/parent/instructions',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': childEmail,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetDoctorInstructionsCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Doctor Instructions',
+      apiUrl: '$baseUrl/monitoring/get/doctor/instructions',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': childEmail,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class IncreaseGamesPlayedCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Increase Games Played',
+      apiUrl: '$baseUrl/monitoring/increase/games/played',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UpdateGeneralFeedbackCall {
+  Future<ApiCallResponse> call({
+    String? feedback = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Update General Feedback',
+      apiUrl: '$baseUrl/monitoring/update/general/feedback',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetGeneralFeedbackCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get General Feedback',
+      apiUrl: '$baseUrl/monitoring/get/general/feedback',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': childEmail,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetTotalGamesPlayedCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Total Games Played',
+      apiUrl: '$baseUrl/monitoring/get/total/games/played',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': childEmail,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AddGameSummaryCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? gameSubject = '',
+    String? gameSummary = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail",
+  "gameSubject": "$gameSubject",
+  "gameSummary": "$gameSummary"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Add Game Summary',
+      apiUrl: '$baseUrl/monitoring/add/game/summary',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetGameSummariesCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Game Summaries',
+      apiUrl: '$baseUrl/monitoring/get/game/summaries',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': childEmail,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteParentInstructionCall {
+  Future<ApiCallResponse> call({
+    int? instructionId,
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Delete Parent Instruction',
+      apiUrl: '$baseUrl/monitoring/delete/parent/instruction',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'id': instructionId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteDoctorInstructionCall {
+  Future<ApiCallResponse> call({
+    int? instructionId,
+    String? authToken = '',
+  }) async {
+    final baseUrl = ChildMonitoringServiceGroup.getBaseUrl(
+      authToken: authToken,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Delete Doctor Instruction',
+      apiUrl: '$baseUrl/monitoring/delete/doctor/instruction',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'id': instructionId,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End ChildMonitoringService Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
