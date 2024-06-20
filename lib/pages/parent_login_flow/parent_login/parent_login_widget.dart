@@ -365,6 +365,7 @@ class _ParentLoginWidgetState extends State<ParentLoginWidget>
                                 password: _model.passwordTextController.text,
                                 userType: 'PARENT',
                               );
+
                               if ((_model.apiResult6tf?.succeeded ?? true)) {
                                 FFAppState().authToken =
                                     (_model.apiResult6tf?.bodyText ?? '');

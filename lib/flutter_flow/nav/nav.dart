@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/backend/schema/structs/index.dart';
-
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -31,12 +29,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const OnboardingWidget(),
+      errorBuilder: (context, state) => const WelcomeWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const OnboardingWidget(),
+          builder: (context, _) => const WelcomeWidget(),
         ),
         FFRoute(
           name: 'Onboarding',
@@ -123,7 +121,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Chat',
           path: '/chat',
-          builder: (context, params) => const ChatWidget(),
+          builder: (context, params) => ChatWidget(
+            doctorEmail: params.getParam(
+              'doctorEmail',
+              ParamType.String,
+            ),
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+            parentEmail: params.getParam(
+              'parentEmail',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ChildHome',
@@ -207,8 +218,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'DrawingGame',
           path: '/drawingGame',
           builder: (context, params) => const DrawingGameWidget(),
+        ),
+        FFRoute(
+          name: 'Welcome',
+          path: '/welcome',
+          builder: (context, params) => const WelcomeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -278,7 +295,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
-    StructBuilder<T>? structBuilder,
+    List<String>? collectionNamePath,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -296,7 +313,7 @@ class FFParameters {
       param,
       type,
       isList,
-      structBuilder: structBuilder,
+      collectionNamePath: collectionNamePath,
     );
   }
 }

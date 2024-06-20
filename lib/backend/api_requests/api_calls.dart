@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -11,8 +11,10 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start AuthService Group Code
 
 class AuthServiceGroup {
-  static String getBaseUrl() => 'https://bcd0-92-241-36-177.ngrok-free.app';
-  static Map<String, String> headers = {};
+  static String getBaseUrl() => 'https://0920-93-213-23-12.ngrok-free.app';
+  static Map<String, String> headers = {
+    'ngrok-skip-browser-warning': 'True',
+  };
   static SendUserPINCall sendUserPINCall = SendUserPINCall();
   static SendPINToParentForChildLinkingCall sendPINToParentForChildLinkingCall =
       SendPINToParentForChildLinkingCall();
@@ -31,6 +33,8 @@ class AuthServiceGroup {
   static GetDoctorEmailCall getDoctorEmailCall = GetDoctorEmailCall();
   static FetchChildsAgeCall fetchChildsAgeCall = FetchChildsAgeCall();
   static GetUsernameCall getUsernameCall = GetUsernameCall();
+  static FetchUserTypeCall fetchUserTypeCall = FetchUserTypeCall();
+  static FetchUserEmailCall fetchUserEmailCall = FetchUserEmailCall();
 }
 
 class SendUserPINCall {
@@ -48,7 +52,7 @@ class SendUserPINCall {
       apiUrl: '$baseUrl/auth/verify/user/email/send-pin',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       body: ffApiRequestBody,
@@ -57,6 +61,7 @@ class SendUserPINCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -74,7 +79,7 @@ class SendPINToParentForChildLinkingCall {
       apiUrl: '$baseUrl/auth/link/child/parent/send-pin',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -82,6 +87,7 @@ class SendPINToParentForChildLinkingCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -99,7 +105,7 @@ class SendPINToDoctorForChildLinkingCall {
       apiUrl: '$baseUrl/auth/link/child/doctor/send-pin',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -107,6 +113,7 @@ class SendPINToDoctorForChildLinkingCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -124,7 +131,7 @@ class ConfirmChildLinkingWithDoctorCall {
       apiUrl: '$baseUrl/auth/link/child/doctor/confirmed',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -132,6 +139,7 @@ class ConfirmChildLinkingWithDoctorCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -162,7 +170,7 @@ class RegisterChildCall {
       apiUrl: '$baseUrl/auth/register/child',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       body: ffApiRequestBody,
@@ -171,6 +179,7 @@ class RegisterChildCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -187,14 +196,15 @@ class FetchParentsChildrenEmailsCall {
       apiUrl: '$baseUrl/auth/get/parent/children',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': '$authToken',
         'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
       },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -219,7 +229,7 @@ class RegisterParentCall {
       apiUrl: '$baseUrl/auth/register/parent',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       body: ffApiRequestBody,
@@ -228,6 +238,7 @@ class RegisterParentCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -252,7 +263,7 @@ class VerifyUserInformationCall {
       apiUrl: '$baseUrl/auth/login/user',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       body: ffApiRequestBody,
@@ -261,13 +272,16 @@ class VerifyUserInformationCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
 }
 
 class ValidateUserTokenCall {
-  Future<ApiCallResponse> call() async {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
@@ -275,7 +289,8 @@ class ValidateUserTokenCall {
       apiUrl: '$baseUrl/auth/validate/user/token',
       callType: ApiCallType.POST,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -283,6 +298,7 @@ class ValidateUserTokenCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -297,13 +313,14 @@ class GetParentEmailCall {
       apiUrl: '$baseUrl/auth/get/child/parent',
       callType: ApiCallType.GET,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -318,13 +335,14 @@ class GetDoctorEmailCall {
       apiUrl: '$baseUrl/auth/get/child/doctor',
       callType: ApiCallType.GET,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
       },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -341,7 +359,7 @@ class FetchChildsAgeCall {
       apiUrl: '$baseUrl/auth/get/child/age',
       callType: ApiCallType.GET,
       headers: {
-        'ngrok-skip-browser-warning': 'true',
+        'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
       params: {},
@@ -349,6 +367,7 @@ class FetchChildsAgeCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -365,14 +384,65 @@ class GetUsernameCall {
       apiUrl: '$baseUrl/auth/get/username',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': '$authToken',
         'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
       },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchUserTypeCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch User Type',
+      apiUrl: '$baseUrl/auth/get/user/type',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchUserEmailCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch User Email',
+      apiUrl: '$baseUrl/auth/get/user/email',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -397,6 +467,9 @@ class ApiPagingParams {
 }
 
 String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
   return item;
 }
 

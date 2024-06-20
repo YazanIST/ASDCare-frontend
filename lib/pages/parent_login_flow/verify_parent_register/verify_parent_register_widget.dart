@@ -277,6 +277,7 @@ class _VerifyParentRegisterWidgetState extends State<VerifyParentRegisterWidget>
                                   username: widget.username,
                                   password: widget.password,
                                 );
+
                                 shouldSetState = true;
                                 if ((_model.apiResultgb6?.succeeded ?? true)) {
                                   FFAppState().authToken =

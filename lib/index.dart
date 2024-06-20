@@ -22,7 +22,7 @@ export '/pages/parent_main_flow/parent_onboarding/parent_onboarding_widget.dart'
     show ParentOnboardingWidget;
 export '/pages/parent_main_flow/adding_child_guide/adding_child_guide_widget.dart'
     show AddingChildGuideWidget;
-export '/pages/parent_main_flow/chat/chat_widget.dart' show ChatWidget;
+export '/pages/parent_main_flow/chat/chat/chat_widget.dart' show ChatWidget;
 export '/pages/child_main_flow/child_home/child_home_widget.dart'
     show ChildHomeWidget;
 export '/pages/child_login_flow/child_register/child_register_widget.dart'
@@ -33,3 +33,4 @@ export '/pages/child_login_flow/verify_parent_email/verify_parent_email_widget.d
     show VerifyParentEmailWidget;
 export '/pages/child_main_flow/drawing_game/drawing_game_widget.dart'
     show DrawingGameWidget;
+export '/pages/welcome/welcome_widget.dart' show WelcomeWidget;

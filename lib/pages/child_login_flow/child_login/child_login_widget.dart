@@ -364,6 +364,7 @@ class _ChildLoginWidgetState extends State<ChildLoginWidget>
                                 password: _model.passwordTextController.text,
                                 userType: 'CHILD',
                               );
+
                               shouldSetState = true;
                               if ((_model.apiResult0j9?.succeeded ?? true)) {
                                 FFAppState().authToken =

@@ -381,7 +381,35 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('Chat');
+                                              _model.parentEmail =
+                                                  await AuthServiceGroup
+                                                      .fetchUserEmailCall
+                                                      .call(
+                                                authToken:
+                                                    FFAppState().authToken,
+                                              );
+
+                                              context.pushNamed(
+                                                'Chat',
+                                                queryParameters: {
+                                                  'doctorEmail': serializeParam(
+                                                    'doc@doc.com',
+                                                    ParamType.String,
+                                                  ),
+                                                  'childEmail': serializeParam(
+                                                    widget.childEmail,
+                                                    ParamType.String,
+                                                  ),
+                                                  'parentEmail': serializeParam(
+                                                    (_model.parentEmail
+                                                            ?.bodyText ??
+                                                        ''),
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+
+                                              setState(() {});
                                             },
                                             child: Icon(
                                               Icons.chevron_right_rounded,

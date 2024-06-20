@@ -286,6 +286,7 @@ class _VerifyParentEmailWidgetState extends State<VerifyParentEmailWidget>
                                   parentEmail: widget.parentEmail,
                                   birthDate: widget.birthdate,
                                 );
+
                                 shouldSetState = true;
                                 if ((_model.apiResulttvf?.succeeded ?? true)) {
                                   FFAppState().authToken =

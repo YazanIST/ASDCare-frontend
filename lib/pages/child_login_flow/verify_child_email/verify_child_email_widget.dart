@@ -279,6 +279,7 @@ class _VerifyChildEmailWidgetState extends State<VerifyChildEmailWidget>
                                     await AuthServiceGroup.sendUserPINCall.call(
                                   email: widget.parentEmail,
                                 );
+
                                 shouldSetState = true;
                                 if ((_model.apiResult8gs?.succeeded ?? true)) {
                                   context.pushNamed(

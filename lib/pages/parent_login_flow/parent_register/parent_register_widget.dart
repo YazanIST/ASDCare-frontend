@@ -484,6 +484,7 @@ class _ParentRegisterWidgetState extends State<ParentRegisterWidget>
                                     await AuthServiceGroup.sendUserPINCall.call(
                                   email: _model.emailAddressTextController.text,
                                 );
+
                                 shouldSetState = true;
                                 if ((_model.pincode?.succeeded ?? true)) {
                                   context.pushNamed(

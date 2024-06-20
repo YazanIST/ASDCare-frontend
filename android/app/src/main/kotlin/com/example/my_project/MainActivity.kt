@@ -1,4 +1,4 @@
-package com.mycompany.asdcareeditted
+package com.mycompany.asdwithchat
 
 import io.flutter.embedding.android.FlutterActivity
 

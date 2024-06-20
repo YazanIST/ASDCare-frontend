@@ -720,6 +720,7 @@ class _ChildRegisterWidgetState extends State<ChildRegisterWidget>
                                     await AuthServiceGroup.sendUserPINCall.call(
                                   email: _model.childEmailTextController.text,
                                 );
+
                                 shouldSetState = true;
                                 if ((_model.apiResult60d?.succeeded ?? true)) {
                                   context.pushNamed(
