@@ -138,7 +138,10 @@ class _AIFeedbackWidgetState extends State<AIFeedbackWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 30.0),
                     child: MarkdownBody(
-                      data: aIFeedbackGetGeneralFeedbackResponse.bodyText,
+                      data: getJsonField(
+                        aIFeedbackGetGeneralFeedbackResponse.jsonBody,
+                        r'''$.feedback''',
+                      ).toString(),
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
                     ),

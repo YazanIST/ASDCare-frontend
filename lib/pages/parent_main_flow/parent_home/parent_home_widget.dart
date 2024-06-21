@@ -174,8 +174,10 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: AuthServiceGroup.fetchChildsAgeCall.call(
+                          future:
+                              AuthServiceGroup.fetchParentsChildAgeCall.call(
                             authToken: FFAppState().authToken,
+                            childEmail: widget.childEmail,
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -192,9 +194,10 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget>
                                 ),
                               );
                             }
-                            final textFetchChildsAgeResponse = snapshot.data!;
+                            final textFetchParentsChildAgeResponse =
+                                snapshot.data!;
                             return Text(
-                              'Details about ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText} (${textFetchChildsAgeResponse.bodyText} years old)',
+                              'Details about ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText} (${textFetchParentsChildAgeResponse.bodyText} years old)',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -380,7 +383,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget>
                                           ),
                                         ),
                                         Text(
-                                          'Notes left by dcotor',
+                                          'Notes / Instructions left by dcotor',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
@@ -809,7 +812,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
-                                          'View summaries of games ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText} played',
+                                          'Summaries of games ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText} played',
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
@@ -937,7 +940,7 @@ class _ParentHomeWidgetState extends State<ParentHomeWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
-                                          'Pick a doctor to monitor ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText}\'s progress',
+                                          'Doctor to monitor ${parentHomeFetchUsernameByEmailAndUsertypeResponse.bodyText}\'s progress',
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(

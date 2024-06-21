@@ -39,6 +39,10 @@ class AuthServiceGroup {
   static FetchUsernameByEmailAndUsertypeCall
       fetchUsernameByEmailAndUsertypeCall =
       FetchUsernameByEmailAndUsertypeCall();
+  static FetchParentsChildAgeCall fetchParentsChildAgeCall =
+      FetchParentsChildAgeCall();
+  static FetchDoctorsChildAgeCall fetchDoctorsChildAgeCall =
+      FetchDoctorsChildAgeCall();
 }
 
 class SendUserPINCall {
@@ -460,21 +464,89 @@ class FetchUsernameByEmailAndUsertypeCall {
   }) async {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
+    final ffApiRequestBody = '''
+{
+  "email": "$email",
+  "userType": "$userType"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Fetch username by email and usertype',
       apiUrl: '$baseUrl/auth/get/username/by/email/and/usertype',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': email,
-        'userType': userType,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: true,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchParentsChildAgeCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+    String? childEmail = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch Parents Child Age',
+      apiUrl: '$baseUrl/auth/get/parent/child/age',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchDoctorsChildAgeCall {
+  Future<ApiCallResponse> call({
+    String? childEmail = '',
+    String? authToken = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch Doctors Child Age',
+      apiUrl: '$baseUrl/auth/get/doctor/child/age',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
       cache: false,
       isStreamingApi: false,
       alwaysAllowBody: false,
@@ -559,15 +631,22 @@ class GetFeedbackCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "screenshot": "$screenshot",
+  "subject": "$subject"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Feedback',
       apiUrl: '$baseUrl/monitoring/advanced/get/feedback',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
       params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -588,18 +667,22 @@ class FinishGameCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "screenshot": "$screenshot",
+  "subject": "$subject"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Finish Game',
       apiUrl: '$baseUrl/monitoring/advanced/finish/game',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'screenshot': screenshot,
-        'subject': subject,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -691,17 +774,21 @@ class GetParentInstructionsCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Parent Instructions',
       apiUrl: '$baseUrl/monitoring/get/parent/instructions',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': childEmail,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -721,17 +808,21 @@ class GetDoctorInstructionsCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Doctor Instructions',
       apiUrl: '$baseUrl/monitoring/get/doctor/instructions',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': childEmail,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -808,17 +899,21 @@ class GetGeneralFeedbackCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get General Feedback',
       apiUrl: '$baseUrl/monitoring/get/general/feedback',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': childEmail,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -838,17 +933,21 @@ class GetTotalGamesPlayedCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Total Games Played',
       apiUrl: '$baseUrl/monitoring/get/total/games/played',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': childEmail,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -906,17 +1005,21 @@ class GetGameSummariesCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Game Summaries',
       apiUrl: '$baseUrl/monitoring/get/game/summaries',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'email': childEmail,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -936,17 +1039,21 @@ class DeleteParentInstructionCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "id": $instructionId
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Delete Parent Instruction',
       apiUrl: '$baseUrl/monitoring/delete/parent/instruction',
-      callType: ApiCallType.DELETE,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'id': instructionId,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -966,17 +1073,21 @@ class DeleteDoctorInstructionCall {
       authToken: authToken,
     );
 
+    final ffApiRequestBody = '''
+{
+  "id": $instructionId
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Delete Doctor Instruction',
       apiUrl: '$baseUrl/monitoring/delete/doctor/instruction',
-      callType: ApiCallType.DELETE,
+      callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
         'Authorization': '$authToken',
       },
-      params: {
-        'id': instructionId,
-      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
