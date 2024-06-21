@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'parent_home_widget.dart' show ParentHomeWidget;
+import 'a_i_feedback_widget.dart' show AIFeedbackWidget;
 import 'package:flutter/material.dart';
 
-class ParentHomeModel extends FlutterFlowModel<ParentHomeWidget> {
+class AIFeedbackModel extends FlutterFlowModel<AIFeedbackWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

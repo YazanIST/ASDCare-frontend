@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -35,6 +36,9 @@ class AuthServiceGroup {
   static GetUsernameCall getUsernameCall = GetUsernameCall();
   static FetchUserTypeCall fetchUserTypeCall = FetchUserTypeCall();
   static FetchUserEmailCall fetchUserEmailCall = FetchUserEmailCall();
+  static FetchUsernameByEmailAndUsertypeCall
+      fetchUsernameByEmailAndUsertypeCall =
+      FetchUsernameByEmailAndUsertypeCall();
 }
 
 class SendUserPINCall {
@@ -441,6 +445,36 @@ class FetchUserEmailCall {
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchUsernameByEmailAndUsertypeCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+    String? email = '',
+    String? userType = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch username by email and usertype',
+      apiUrl: '$baseUrl/auth/get/username/by/email/and/usertype',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {
+        'email': email,
+        'userType': userType,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: true,
       cache: false,
       isStreamingApi: false,
       alwaysAllowBody: false,

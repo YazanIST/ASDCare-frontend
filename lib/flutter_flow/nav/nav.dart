@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -97,16 +99,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ChildResetPassword',
           path: '/childResetPassword',
           builder: (context, params) => const ChildResetPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'ParentHome',
-          path: '/parentHome',
-          builder: (context, params) => ParentHomeWidget(
-            childEmail: params.getParam(
-              'childEmail',
-              ParamType.String,
-            ),
-          ),
         ),
         FFRoute(
           name: 'ParentOnboarding',
@@ -223,6 +215,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Welcome',
           path: '/welcome',
           builder: (context, params) => const WelcomeWidget(),
+        ),
+        FFRoute(
+          name: 'ParentHome',
+          path: '/parentHome',
+          builder: (context, params) => ParentHomeWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ParentInstructions',
+          path: '/parentInstructions',
+          builder: (context, params) => ParentInstructionsWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'DoctorInstructions',
+          path: '/doctorInstructions',
+          builder: (context, params) => DoctorInstructionsWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'AIFeedback',
+          path: '/aIFeedback',
+          builder: (context, params) => AIFeedbackWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -296,6 +328,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -314,6 +347,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }

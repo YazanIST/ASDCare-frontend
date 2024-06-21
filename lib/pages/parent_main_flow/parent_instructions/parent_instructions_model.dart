@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'parent_home_widget.dart' show ParentHomeWidget;
+import 'parent_instructions_widget.dart' show ParentInstructionsWidget;
 import 'package:flutter/material.dart';
 
-class ParentHomeModel extends FlutterFlowModel<ParentHomeWidget> {
+class ParentInstructionsModel
+    extends FlutterFlowModel<ParentInstructionsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

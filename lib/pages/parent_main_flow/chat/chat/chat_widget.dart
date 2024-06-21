@@ -50,7 +50,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(40.0),
+          preferredSize: const Size.fromHeight(50.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
@@ -102,7 +102,6 @@ class _ChatWidgetState extends State<ChatWidget> {
             ),
             actions: const [],
             centerTitle: false,
-            toolbarHeight: 35.0,
             elevation: 2.0,
           ),
         ),
