@@ -195,7 +195,6 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                         childEmail: widget.childEmail,
                                         timestamp: getCurrentTimestamp,
                                         senderType: 'PARENT',
-                                        image: '',
                                         text: _model.textController.text,
                                       ));
                                       _model.newChatMessage =
@@ -206,7 +205,6 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                                 childEmail: widget.childEmail,
                                                 timestamp: getCurrentTimestamp,
                                                 senderType: 'PARENT',
-                                                image: '',
                                                 text:
                                                     _model.textController.text,
                                               ),
@@ -329,7 +327,6 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                         childEmail: widget.childEmail,
                                         timestamp: getCurrentTimestamp,
                                         senderType: 'PARENT',
-                                        image: ' ',
                                         text: _model.textController.text,
                                       ));
                                       _model.newChat =
@@ -340,7 +337,6 @@ class _ChatThreadComponentWidgetState extends State<ChatThreadComponentWidget> {
                                                 childEmail: widget.childEmail,
                                                 timestamp: getCurrentTimestamp,
                                                 senderType: 'PARENT',
-                                                image: ' ',
                                                 text:
                                                     _model.textController.text,
                                               ),

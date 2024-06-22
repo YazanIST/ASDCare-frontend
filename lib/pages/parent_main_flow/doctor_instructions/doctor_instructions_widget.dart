@@ -91,7 +91,15 @@ class _DoctorInstructionsWidgetState extends State<DoctorInstructionsWidget> {
                     size: 30.0,
                   ),
                   onPressed: () async {
-                    context.pop();
+                    context.pushNamed(
+                      'ParentHome',
+                      queryParameters: {
+                        'childEmail': serializeParam(
+                          widget.childEmail,
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
                   },
                 ),
                 title: Align(

@@ -4,14 +4,13 @@ import '/components/empty_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/parent_main_flow/add_instruct/add_instruct_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'parent_instructions_model.dart';
-export 'parent_instructions_model.dart';
+import 'games_played_model.dart';
+export 'games_played_model.dart';
 
-class ParentInstructionsWidget extends StatefulWidget {
-  const ParentInstructionsWidget({
+class GamesPlayedWidget extends StatefulWidget {
+  const GamesPlayedWidget({
     super.key,
     required this.childEmail,
   });
@@ -19,19 +18,18 @@ class ParentInstructionsWidget extends StatefulWidget {
   final String? childEmail;
 
   @override
-  State<ParentInstructionsWidget> createState() =>
-      _ParentInstructionsWidgetState();
+  State<GamesPlayedWidget> createState() => _GamesPlayedWidgetState();
 }
 
-class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
-  late ParentInstructionsModel _model;
+class _GamesPlayedWidgetState extends State<GamesPlayedWidget> {
+  late GamesPlayedModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ParentInstructionsModel());
+    _model = createModel(context, () => GamesPlayedModel());
   }
 
   @override
@@ -46,9 +44,9 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
-      future: ChildMonitoringServiceGroup.getParentInstructionsCall.call(
-        authToken: FFAppState().authToken,
+      future: ChildMonitoringServiceGroup.getGameSummariesCall.call(
         childEmail: widget.childEmail,
+        authToken: FFAppState().authToken,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -68,7 +66,7 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
             ),
           );
         }
-        final parentInstructionsGetParentInstructionsResponse = snapshot.data!;
+        final gamesPlayedGetGameSummariesResponse = snapshot.data!;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -106,9 +104,10 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                 title: Align(
                   alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 3.0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(39.0, 0.0, 0.0, 3.0),
                     child: Text(
-                      'Parent Instructions',
+                      'Games Played',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
@@ -119,67 +118,7 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                     ),
                   ),
                 ),
-                actions: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                    child: FlutterFlowIconButton(
-                      borderRadius: 31.0,
-                      borderWidth: 0.0,
-                      buttonSize: 40.0,
-                      icon: Icon(
-                        Icons.add,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
-                      ),
-                      onPressed: () async {
-                        var shouldSetState = false;
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => _model.unfocusNode.canRequestFocus
-                                  ? FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode)
-                                  : FocusScope.of(context).unfocus(),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: AddInstructWidget(
-                                  childEmail: widget.childEmail!,
-                                ),
-                              ),
-                            );
-                          },
-                        ).then((value) =>
-                            safeSetState(() => _model.isUpdated = value));
-
-                        shouldSetState = true;
-                        if (_model.isUpdated!) {
-                          context.pushNamed(
-                            'ParentInstructions',
-                            queryParameters: {
-                              'childEmail': serializeParam(
-                                widget.childEmail,
-                                ParamType.String,
-                              ),
-                            }.withoutNulls,
-                          );
-
-                          if (shouldSetState) setState(() {});
-                          return;
-                        } else {
-                          if (shouldSetState) setState(() {});
-                          return;
-                        }
-
-                        if (shouldSetState) setState(() {});
-                      },
-                    ),
-                  ),
-                ],
+                actions: const [],
                 centerTitle: false,
                 elevation: 0.0,
               ),
@@ -191,9 +130,11 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                 Align(
                   alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 8.0),
                     child: Text(
-                      'These are the instructions you inserted before!',
+                      'These are the drawings your child did and a little summary of their progress and activity throughout each game!',
+                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Readex Pro',
                             letterSpacing: 0.0,
@@ -203,26 +144,24 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final instruc =
-                        (parentInstructionsGetParentInstructionsResponse
-                                    .jsonBody
-                                    .toList()
-                                    .map<InstructionStruct?>(
-                                        InstructionStruct.maybeFromMap)
-                                    .toList() as Iterable<InstructionStruct?>)
-                                .withoutNulls
-                                .toList() ??
-                            [];
-                    if (instruc.isEmpty) {
+                    final games = (gamesPlayedGetGameSummariesResponse.jsonBody
+                                .toList()
+                                .map<GameSummaryStruct?>(
+                                    GameSummaryStruct.maybeFromMap)
+                                .toList() as Iterable<GameSummaryStruct?>)
+                            .withoutNulls
+                            .toList() ??
+                        [];
+                    if (games.isEmpty) {
                       return const EmptyComponentWidget();
                     }
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: instruc.length,
-                      itemBuilder: (context, instrucIndex) {
-                        final instrucItem = instruc[instrucIndex];
+                      itemCount: games.length,
+                      itemBuilder: (context, gamesIndex) {
+                        final gamesItem = games[gamesIndex];
                         return Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 1.0, 0.0, 0.0),
@@ -247,7 +186,7 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Icon(
-                                        Icons.integration_instructions_outlined,
+                                        Icons.draw_outlined,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 45.0,
@@ -263,7 +202,19 @@ class _ParentInstructionsWidgetState extends State<ParentInstructionsWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                instrucItem.instruction,
+                                                'Drawing Subject: ${gamesItem.gameSubject}',
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'Session Summary: ${gamesItem.gameSummary}',
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)

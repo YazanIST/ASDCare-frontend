@@ -295,16 +295,55 @@ class _ParentOnboardingWidgetState extends State<ParentOnboardingWidget>
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.center,
                                                   children: [
-                                                    Text(
-                                                      'Some name here',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                    FutureBuilder<
+                                                        ApiCallResponse>(
+                                                      future: AuthServiceGroup
+                                                          .fetchUsernameByEmailAndUsertypeCall
+                                                          .call(
+                                                        authToken: FFAppState()
+                                                            .authToken,
+                                                        email:
+                                                            childrenEmailsItem
+                                                                .toString(),
+                                                        userType: 'CHILD',
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        final textFetchUsernameByEmailAndUsertypeResponse =
+                                                            snapshot.data!;
+                                                        return Text(
+                                                          textFetchUsernameByEmailAndUsertypeResponse
+                                                              .bodyText,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        );
+                                                      },
                                                     ),
                                                     Padding(
                                                       padding:

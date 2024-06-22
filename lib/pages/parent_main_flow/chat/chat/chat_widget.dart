@@ -1,8 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/parent_main_flow/chat/chat_thread_component/chat_thread_component_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'chat_model.dart';
 export 'chat_model.dart';
 
@@ -42,6 +44,8 @@ class _ChatWidgetState extends State<ChatWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -74,15 +78,43 @@ class _ChatWidgetState extends State<ChatWidget> {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Doctor',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 16.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                        ),
+                  FutureBuilder<ApiCallResponse>(
+                    future: AuthServiceGroup.fetchUsernameByEmailAndUsertypeCall
+                        .call(
+                      authToken: FFAppState().authToken,
+                      email: widget.doctorEmail,
+                      userType: 'DOCTOR',
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      final textFetchUsernameByEmailAndUsertypeResponse =
+                          snapshot.data!;
+                      return Text(
+                        'Dr. ${textFetchUsernameByEmailAndUsertypeResponse.bodyText}',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Outfit',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      );
+                    },
                   ),
                   Text(
                     valueOrDefault<String>(
@@ -91,7 +123,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily: 'Outfit',
-                          color: const Color(0xFF7432A9),
+                          color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 12.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w200,

@@ -43,6 +43,14 @@ class AuthServiceGroup {
       FetchParentsChildAgeCall();
   static FetchDoctorsChildAgeCall fetchDoctorsChildAgeCall =
       FetchDoctorsChildAgeCall();
+  static CheckChildHasDoctorCall checkChildHasDoctorCall =
+      CheckChildHasDoctorCall();
+  static GetParentEmailForDoctorCall getParentEmailForDoctorCall =
+      GetParentEmailForDoctorCall();
+  static GetDoctorEmailForParentCall getDoctorEmailForParentCall =
+      GetDoctorEmailForParentCall();
+  static FetchAllDoctorsDataCall fetchAllDoctorsDataCall =
+      FetchAllDoctorsDataCall();
 }
 
 class SendUserPINCall {
@@ -108,6 +116,11 @@ class SendPINToDoctorForChildLinkingCall {
   }) async {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
+    final ffApiRequestBody = '''
+{
+  "childEmail": "$childEmail",
+  "doctorEmail": "$doctorEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send PIN to Doctor for Child Linking',
       apiUrl: '$baseUrl/auth/link/child/doctor/send-pin',
@@ -116,6 +129,7 @@ class SendPINToDoctorForChildLinkingCall {
         'ngrok-skip-browser-warning': 'True',
       },
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -131,17 +145,25 @@ class ConfirmChildLinkingWithDoctorCall {
   Future<ApiCallResponse> call({
     String? childEmail = '',
     String? doctorEmail = '',
+    String? authToken = '',
   }) async {
     final baseUrl = AuthServiceGroup.getBaseUrl();
 
+    final ffApiRequestBody = '''
+{
+  "childEmail": "$childEmail",
+  "doctorEmail": "$doctorEmail"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'Confirm Child Linking with Doctor',
       apiUrl: '$baseUrl/auth/link/child/doctor/confirmed',
       callType: ApiCallType.POST,
       headers: {
         'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
       },
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -544,6 +566,118 @@ class FetchDoctorsChildAgeCall {
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CheckChildHasDoctorCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+    String? childEmail = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Check Child Has Doctor',
+      apiUrl: '$baseUrl/auth/get/child/has/doctor',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetParentEmailForDoctorCall {
+  Future<ApiCallResponse> call() async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Parent Email For Doctor',
+      apiUrl: '$baseUrl/auth/get/child/parent/email/for/doctor',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetDoctorEmailForParentCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+    String? childEmail = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "email": "$childEmail"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Doctor Email For Parent',
+      apiUrl: '$baseUrl/auth/get/child/doctor/email/for/parent',
+      callType: ApiCallType.POST,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class FetchAllDoctorsDataCall {
+  Future<ApiCallResponse> call({
+    String? authToken = '',
+  }) async {
+    final baseUrl = AuthServiceGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Fetch All Doctors Data',
+      apiUrl: '$baseUrl/auth/get/all/doctors/data',
+      callType: ApiCallType.GET,
+      headers: {
+        'ngrok-skip-browser-warning': 'True',
+        'Authorization': '$authToken',
+      },
+      params: {},
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

@@ -40,3 +40,7 @@ export '/pages/parent_main_flow/doctor_instructions/doctor_instructions_widget.d
     show DoctorInstructionsWidget;
 export '/pages/parent_main_flow/a_i_feedback/a_i_feedback_widget.dart'
     show AIFeedbackWidget;
+export '/pages/parent_main_flow/games_played/games_played_widget.dart'
+    show GamesPlayedWidget;
+export '/pages/parent_main_flow/pick_doctor/pick_doctor_widget.dart'
+    show PickDoctorWidget;

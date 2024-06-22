@@ -69,6 +69,9 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
+                            constraints: const BoxConstraints(
+                              maxWidth: 250.0,
+                            ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).alternate,
                               boxShadow: const [
@@ -186,6 +189,9 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
+                      constraints: const BoxConstraints(
+                        maxWidth: 250.0,
+                      ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primary,
                         boxShadow: const [
@@ -218,11 +224,11 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                                 child: Text(
                               widget.message!.text,
                               style: FlutterFlowTheme.of(context)
-                                  .titleSmall
+                                  .bodyLarge
                                   .override(
                                     fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).info,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
                                   ),
                             )),
                             if (widget.message?.image != null &&

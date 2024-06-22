@@ -8,23 +8,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class InstructionStruct extends FFFirebaseStruct {
   InstructionStruct({
-    int? id,
     String? email,
     String? instruction,
+    String? id,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _id = id,
-        _email = email,
+  })  : _email = email,
         _instruction = instruction,
+        _id = id,
         super(firestoreUtilData);
-
-  // "id" field.
-  int? _id;
-  int get id => _id ?? 0;
-  set id(int? val) => _id = val;
-
-  void incrementId(int amount) => id = id + amount;
-
-  bool hasId() => _id != null;
 
   // "email" field.
   String? _email;
@@ -40,11 +31,18 @@ class InstructionStruct extends FFFirebaseStruct {
 
   bool hasInstruction() => _instruction != null;
 
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  set id(String? val) => _id = val;
+
+  bool hasId() => _id != null;
+
   static InstructionStruct fromMap(Map<String, dynamic> data) =>
       InstructionStruct(
-        id: castToType<int>(data['id']),
         email: data['email'] as String?,
         instruction: data['instruction'] as String?,
+        id: data['id'] as String?,
       );
 
   static InstructionStruct? maybeFromMap(dynamic data) => data is Map
@@ -52,17 +50,13 @@ class InstructionStruct extends FFFirebaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'id': _id,
         'email': _email,
         'instruction': _instruction,
+        'id': _id,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'id': serializeParam(
-          _id,
-          ParamType.int,
-        ),
         'email': serializeParam(
           _email,
           ParamType.String,
@@ -71,15 +65,14 @@ class InstructionStruct extends FFFirebaseStruct {
           _instruction,
           ParamType.String,
         ),
+        'id': serializeParam(
+          _id,
+          ParamType.String,
+        ),
       }.withoutNulls;
 
   static InstructionStruct fromSerializableMap(Map<String, dynamic> data) =>
       InstructionStruct(
-        id: deserializeParam(
-          data['id'],
-          ParamType.int,
-          false,
-        ),
         email: deserializeParam(
           data['email'],
           ParamType.String,
@@ -87,6 +80,11 @@ class InstructionStruct extends FFFirebaseStruct {
         ),
         instruction: deserializeParam(
           data['instruction'],
+          ParamType.String,
+          false,
+        ),
+        id: deserializeParam(
+          data['id'],
           ParamType.String,
           false,
         ),
@@ -98,28 +96,28 @@ class InstructionStruct extends FFFirebaseStruct {
   @override
   bool operator ==(Object other) {
     return other is InstructionStruct &&
-        id == other.id &&
         email == other.email &&
-        instruction == other.instruction;
+        instruction == other.instruction &&
+        id == other.id;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, email, instruction]);
+  int get hashCode => const ListEquality().hash([email, instruction, id]);
 }
 
 InstructionStruct createInstructionStruct({
-  int? id,
   String? email,
   String? instruction,
+  String? id,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
     InstructionStruct(
-      id: id,
       email: email,
       instruction: instruction,
+      id: id,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

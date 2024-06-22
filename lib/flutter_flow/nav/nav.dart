@@ -255,6 +255,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'GamesPlayed',
+          path: '/gamesPlayed',
+          builder: (context, params) => GamesPlayedWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'PickDoctor',
+          path: '/pickDoctor',
+          builder: (context, params) => PickDoctorWidget(
+            childEmail: params.getParam(
+              'childEmail',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
