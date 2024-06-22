@@ -1,53 +1,287 @@
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import 'package:a_s_dwithchat/app_state.dart';
+import 'package:a_s_dwithchat/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:a_s_dwithchat/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '/backend/api_requests/api_calls.dart';
+import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'drawing_game_model.dart';
-import 'package:provider/provider.dart';  // Add this import for Provider
-
-export 'drawing_game_model.dart';
 
 class DrawingGameWidget extends StatefulWidget {
-  const DrawingGameWidget({super.key});
+  const DrawingGameWidget({Key? key});
 
   @override
   State<DrawingGameWidget> createState() => _DrawingGameWidgetState();
 }
 
 class _DrawingGameWidgetState extends State<DrawingGameWidget> {
-  late DrawingGameModel _model;
-
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+  Uint8List? imageBytes;
+  String feedback = '';
+  String subject = '';
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final ScreenshotController screenshotController = ScreenshotController();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DrawingGameModel());
+    fetchGameImage(); // Fetch game image when the widget initializes
   }
 
-  @override
-  void dispose() {
-    _model.dispose();
-    super.dispose();
+  Future<void> fetchGameImage() async {
+    try {
+      final response =
+          await GenerateGameCall().call(authToken: FFAppState().authToken);
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseBody = jsonDecode(response.bodyText);
+        String base64Image = responseBody['image'];
+        subject = responseBody['subject'];
+        setState(() {
+          imageBytes = base64Decode(base64Image);
+        });
+      } else {
+        print("Error: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Error $e");
+    }
+  }
+
+  Future<void> sendImageToFeedbackAPI(String base64Image) async {
+    try {
+      final response = await GetFeedbackCall().call(
+        screenshot: base64Image,
+        subject: subject,
+        authToken: FFAppState().authToken,
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseBody = jsonDecode(response.bodyText);
+        String feedback = responseBody['feedback'];
+        showFeedbackDialog(feedback);
+        print("Feedback: $feedback");
+      } else {
+        print("Error getting feedback. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
+  }
+
+  Future<void> encourageFeedback(String base64Image) async {
+    try {
+      final response = await FinishGameCall().call(
+        screenshot: base64Image,
+        subject: subject,
+        authToken: FFAppState().authToken,
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseBody = jsonDecode(response.bodyText);
+        String finalFeedback = responseBody['finalFeedback'];
+        finishGame(finalFeedback);
+        print("Final Feedback: $finalFeedback");
+      } else {
+        print("Error getting feedback. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
+  }
+
+  void finishGame(String feedback) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: Text("Close"))
+        ],
+        title: Text("Final Feedback"),
+        content: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  feedback,
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showFeedbackDialog(String feedback) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Close"))
+        ],
+        title: Text("Feedback"),
+        content: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  feedback,
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showImage() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Close"))
+        ],
+        content: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: imageBytes != null
+                      ? Image.memory(
+                          imageBytes!,
+                          fit: BoxFit.contain,
+                        )
+                      : CircularProgressIndicator(), // Show a loading indicator if imageBytes is null
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: ChangeNotifierProvider(
-        create: (context) => DrawModel(),
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          body: Column(
-            children: [
-              Expanded(child: DrawBoard()),
-              DrawTools(),
-            ],
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
+            size: 30,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            color: FlutterFlowTheme.of(context).primaryText,
+            onPressed: () async {
+              print(subject);
+              final image = await screenshotController
+                  .captureFromWidget(DrawBoard(), pixelRatio: 2);
+              List<int> imageBytes = image;
+              String base64Image = base64Encode(imageBytes);
+              await encourageFeedback(base64Image);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.feedback_outlined),
+            color: FlutterFlowTheme.of(context).primaryText,
+            onPressed: () async {
+              print(subject);
+              final image = await screenshotController
+                  .captureFromWidget(DrawBoard(), pixelRatio: 2);
+              List<int> imageBytes = image;
+              String base64Image = base64Encode(imageBytes);
+              await sendImageToFeedbackAPI(base64Image);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.image_search),
+            color: FlutterFlowTheme.of(context).primaryText,
+            onPressed: () async {
+              showImage();
+            },
+          ),
+        ],
+        centerTitle: false,
+        elevation: 0,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+              child: ChangeNotifierProvider(
+                create: (context) => DrawModel(),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Container(color: Colors.white), // Background color
+                          DrawBoard(), // Drawing area
+                        ],
+                      ),
+                    ),
+                    DrawTools(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -125,8 +359,6 @@ class DrawnLine {
 }
 
 class DrawTools extends StatelessWidget {
-  const DrawTools({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -150,21 +382,24 @@ class DrawTools extends StatelessWidget {
                 icon: const Icon(Icons.brush),
                 color: Colors.red,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setColor(Colors.red);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setColor(Colors.red);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.brush),
                 color: Colors.green,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setColor(Colors.green);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setColor(Colors.green);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.brush),
                 color: Colors.blue,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setColor(Colors.blue);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setColor(Colors.blue);
                 },
               ),
               IconButton(
@@ -192,35 +427,40 @@ class DrawTools extends StatelessWidget {
                 icon: const Icon(Icons.lens, size: 8),
                 color: Colors.black,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setBrushSize(4.0);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setBrushSize(4.0);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.lens, size: 16),
                 color: Colors.black,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setBrushSize(8.0);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setBrushSize(8.0);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.lens, size: 24),
                 color: Colors.black,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setBrushSize(12.0);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setBrushSize(12.0);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.lens, size: 32),
                 color: Colors.black,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setBrushSize(16.0);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setBrushSize(16.0);
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.lens, size: 40),
                 color: Colors.black,
                 onPressed: () {
-                  Provider.of<DrawModel>(context, listen: false).setBrushSize(20.0);
+                  Provider.of<DrawModel>(context, listen: false)
+                      .setBrushSize(20.0);
                 },
               ),
             ],
